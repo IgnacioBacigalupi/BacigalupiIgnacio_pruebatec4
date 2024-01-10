@@ -56,6 +56,5 @@ Para facilitar la comprensión y prueba de los endpoints de la API, se proporcio
 
 - **Dependencias para las reservas**: Para realizar una reserva, es necesario que tanto los vuelos como los hoteles estén creados previamente en el sistema. La reserva se vincula con estos elementos existentes.
 
-- **Creación de usuarios**: En el caso de la reserva de hotel, se asume que la creación de usuarios se realiza implícitamente en el proceso de reserva, asignándoles roles y permisos apropiados.
-
+ - **Creación de usuarios**: En el caso de la reserva de hotel, se asume que la creación de usuarios se realiza implícitamente en el proceso de reserva, el sistema corrobora la existencia del usuario por medio del correo electronico por lo que no permite correos duplicados y por lo tanto no permite hacer la reserva.
 
