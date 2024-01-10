@@ -1,4 +1,4 @@
-#Ignacio Bacigalupi Prueba Tecnica
+# Ignacio Bacigalupi Prueba Tecnica
 
 # API Agencia de Turismo
 Desarrollo de una API que permite la gestión de reservas de vuelos y hoteles para una agencia de turismo. Esta API facilita la gestión completa de hoteles y vuelos, desde la creación de los mismos hasta la generación de reservas correspondientes. Además, permite realizar filtros para verificar la disponibilidad de vuelos y hoteles por ubicacion y fechas específicas.
