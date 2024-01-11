@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservaHotelService implements IReservaHotelService {
@@ -94,6 +95,19 @@ public class ReservaHotelService implements IReservaHotelService {
         return reservaHotel;
 
 
+    }
+
+    @Override
+    public ReservaHotel eliminarHotelReservaPorId(Long id) {
+        Optional<ReservaHotel> reservaHotelOptional = reservaHotelRepository.findById(id);
+
+        if (reservaHotelOptional.isPresent()) {
+            ReservaHotel reservaHotel = reservaHotelOptional.get();
+            reservaHotelRepository.delete(reservaHotel);
+            return reservaHotel;
+        } else {
+            return null; // o lanzar una excepción indicando que no se encontró la reserva con el ID proporcionado
+        }
     }
 
 

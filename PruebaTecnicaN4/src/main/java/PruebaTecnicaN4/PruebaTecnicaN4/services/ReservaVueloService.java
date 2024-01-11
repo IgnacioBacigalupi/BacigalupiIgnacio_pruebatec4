@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservaVueloService implements IReservaVueloService {
@@ -69,5 +70,17 @@ public class ReservaVueloService implements IReservaVueloService {
 
     }
 
+    @Override
+    public ReservaVuelo eliminarVueloReservaPorId(Long id) {
+        Optional<ReservaVuelo> reservaOptional = reservaVueloRepository.findById(id);
+
+        if (reservaOptional.isPresent()) {
+            ReservaVuelo reservaVuelo = reservaOptional.get();
+            reservaVueloRepository.delete(reservaVuelo);
+            return reservaVuelo;
+        } else {
+            return null;
+        }
+    }
 
 }

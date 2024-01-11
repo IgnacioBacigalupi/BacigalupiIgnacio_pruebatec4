@@ -8,11 +8,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/agency")
@@ -40,5 +38,19 @@ public class ReservaHotelController {
         return ResponseEntity.ok().body("El precio total de la reserva es :" + reservaHotel.getPrecio() + " €");
     }
 
+    @Operation(summary = "Eliminar una reserva de hotel por su id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Reserva eliminada correctamente"),
+            @ApiResponse(responseCode = "400", description = "No se encontro una reserva con ese id")
+    })
+    @DeleteMapping("/hotel-booking/delete/{id}")
+    public ResponseEntity<?> eliminarReservaHotel(@PathVariable Long id) {
+        ReservaHotel reservaEliminada = reservaHotelService.eliminarHotelReservaPorId(id);
 
+        if (reservaEliminada != null) {
+            return new ResponseEntity<>(reservaEliminada, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se encontró la reserva de hotel con el ID proporcionado.", HttpStatus.NOT_FOUND);
+        }
+    }
 }

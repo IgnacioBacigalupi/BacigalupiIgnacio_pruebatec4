@@ -7,5 +7,5 @@ import PruebaTecnicaN4.PruebaTecnicaN4.model.ReservaHotel;
 public interface IReservaHotelService {
     ReservaHotel crearReservaHotel(ReservaHotelDto reservaHotelDto);
 
-
+    ReservaHotel eliminarHotelReservaPorId(Long id);
 }
