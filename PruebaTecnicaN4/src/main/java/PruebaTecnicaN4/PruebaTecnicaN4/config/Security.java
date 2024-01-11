@@ -24,6 +24,8 @@ public class Security {
                                 .requestMatchers("/agency/flights/search").permitAll()
                                 .requestMatchers("/agency/flight/{id}").permitAll()
                                 .requestMatchers("/agency/hotels/{id}").permitAll()
+                                .requestMatchers("/agency/flight-booking/new").permitAll()
+                                .requestMatchers("/agency/hotel-booking/new").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
