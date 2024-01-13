@@ -31,7 +31,4 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<ReservaHotel> hoteles = new ArrayList<>();
 
-
-    @OneToMany(mappedBy = "pasajero", cascade = CascadeType.ALL)
-    private List<ReservaVuelo> reservaVuelos = new ArrayList<>();
 }

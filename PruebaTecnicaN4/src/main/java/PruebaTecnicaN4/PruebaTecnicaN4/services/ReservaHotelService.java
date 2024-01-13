@@ -49,7 +49,7 @@ public class ReservaHotelService implements IReservaHotelService {
 
         //Verifico la fecha
         if (reservaHotelDto.getFechaDesde().isBefore(LocalDate.now()) || habitaciones.isEmpty() ||
-                reservaHotelDto.getFechaHasta().isAfter(habitaciones.get(0).getDisponibleHasta()) ||
+                reservaHotelDto.getFechaDesde().isAfter(habitaciones.get(0).getDisponibleHasta()) ||
                 reservaHotelDto.getFechaHasta().isBefore(LocalDate.now())) {
 
             return null;
@@ -103,10 +103,12 @@ public class ReservaHotelService implements IReservaHotelService {
 
         if (reservaHotelOptional.isPresent()) {
             ReservaHotel reservaHotel = reservaHotelOptional.get();
+            Usuario usuario = reservaHotel.getUsuario();
             reservaHotelRepository.delete(reservaHotel);
+            usuarioRepository.delete(usuario);
             return reservaHotel;
         } else {
-            return null; // o lanzar una excepción indicando que no se encontró la reserva con el ID proporcionado
+            return null;
         }
     }
 

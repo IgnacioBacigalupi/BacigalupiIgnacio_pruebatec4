@@ -76,6 +76,9 @@ public class ReservaVueloService implements IReservaVueloService {
 
         if (reservaOptional.isPresent()) {
             ReservaVuelo reservaVuelo = reservaOptional.get();
+            Vuelo vuelo = reservaVuelo.getVuelo();
+            vuelo.setEstado(false);
+            vueloRepository.save(vuelo);
             reservaVueloRepository.delete(reservaVuelo);
             return reservaVuelo;
         } else {

@@ -34,9 +34,6 @@ public class ReservaVuelo {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
-    private Usuario pasajero;
-    @ManyToOne
     @JoinColumn(name = "id_vuelo")
     private Vuelo vuelo;
 }
